@@ -26,11 +26,6 @@ This guide shows how to migrate your backend API from Render to DigitalOcean VPS
 ### 1.2 💳 Add Payment Method
 1. 🧭 Navigate to **Account → Billing**
 2. 💳 Add credit card or PayPal
-3. 💵 DigitalOcean will charge $1 for verification (refunded)
-
-### 1.3 🎁 Get Welcome Credit
-- 🔍 Look for promotional codes for $100-200 free credit
-- 🔗 Often available through referral links or current promotions
 
 ---
 
@@ -78,7 +73,7 @@ Get-Content $env:USERPROFILE\.ssh\id_ed25519.pub
 8. 🚀 Click **Create Droplet**
 
 ### 3.3 📍 Note Your IP Address
-⏰ After 1-2 minutes, note your droplet's IP address (e.g., `167.99.79.56`)
+⏰ After 1-2 minutes, note your droplet's IP address (e.g., `176.88.58.65`)
 
 ---
 
@@ -123,8 +118,11 @@ ufw allow 22
 ufw allow 80
 ufw allow 443
 ufw enable
+
 ```
 ✅ Type `y` when prompted.
+
+REMEMBER TO ALLOW FIRST BEFORE ENABLE!
 
 ### 4.7 🧪 Test New User Connection
 Exit and reconnect as wings user:
@@ -204,15 +202,14 @@ npm install express express-rate-limit node-fetch@2.6.7 dotenv
 cat > .env << 'EOF'
 AI_PROVIDER=groqcloud
 AI_KEY=your_groqcloud_api_key_here
-GROQCLOUD_URL=
 CACHE_TTL_MS=3600000
 PORT=5000
-CORS_ORIGIN=https://wingsportfolio.dev
-MB_USER_AGENT=wingsportfolio/1.0 (api@wingsportfolio.dev)
+CORS_ORIGIN=the origin you only want to allow, Leave blank if you want to allow all origin
+This is just an example, add your actual .env file here.
 EOF
 ```
 
-**⚠️ 🔑 Important: Replace `your_groqcloud_api_key_here` with your actual GroqCloud API key.**
+
 
 ### 6.6 🧪 Test Application
 ```bash
@@ -473,31 +470,6 @@ pm2 restart wingsportfolio-api
 
 ---
 
-## 🎉 Congratulations!
-
-🌟 You now have a professional VPS setup with:
-
-✅ **🚫 No Cold Starts** - Your API runs 24/7  
-✅ **🔒 SSL Security** - HTTPS with auto-renewal  
-✅ **🔄 Process Management** - PM2 handles crashes/restarts  
-✅ **⚡ Reverse Proxy** - Nginx for better performance  
-✅ **💰 Cost Effective** - Only ~$6/month  
-✅ **🌐 Professional Domain** - `https://api.wingsportfolio.dev`
-
-🎵 Your song recommendation feature will now work instantly without any delays! 🚀
-
----
-
-## � Cost Breakdown
-
-- 🌊 **DigitalOcean VPS**: $6/month (1GB RAM)
-- 🌐 **Domain**: Already owned (`wingsportfolio.dev`)
-- 🔒 **SSL Certificate**: Free (Let's Encrypt)
-- 💵 **Total**: **$6/month** vs Render's higher pricing
-
-🎯 **Savings**: Significant cost reduction + better performance + no cold starts!
-
----
 
 ## 🚨 Important Notes
 
